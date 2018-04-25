@@ -35,7 +35,7 @@ app.get('/test', function(req, res){
 
 
 // use port 3000 unless there exists a preconfigured port
-var port = process.env.port || 3000;
+var port = process.env.PORT || 5000;
 const host = '0.0.0.0';
 
 
