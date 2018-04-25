@@ -11,7 +11,7 @@ const getAsync = Promise.promisify(cmd.get, { multiArgs: true, context: cmd })
 app.get('/start', function(req, res){
    
    
-   getAsync('net use \\SANGITA\admin$ admin /user:Administrator').then(data => {
+   getAsync('net use x: \\192.168.0.79\admin$/password:admin/user:Administrator/persistent:yes').then(data => {
 		
 				   getAsync('SC \\SANGITA start RohitService').then(data => {
 					   res.send(data);	 
