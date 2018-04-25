@@ -46,12 +46,10 @@ app.get('/test', function(req, res){
 
 app.get('/ping' , function(req,res){
 	  
-	  //var host = '192.168.0.79';
-	   var host  ='google.com';
-		ping.sys.probe(host, function(isAlive){
-			var msg = isAlive ? 'host ' + host + ' is alive' : 'host ' + host + ' is dead';
-			 res.send(msg)
-		});
+	  var sys = require('sys')
+		var exec = require('child_process').exec;
+		function puts(error, stdout, stderr) {   res.send(stdout); }
+		exec("ping 192.168.0.79", puts);
 	 
 });
 
