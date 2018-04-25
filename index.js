@@ -2,6 +2,9 @@ var express = require('express');
 var app = express();
 var Promise=require('bluebird');
 var cmd=require('node-cmd');
+var ping = require('ping');
+
+
  
 const getAsync = Promise.promisify(cmd.get, { multiArgs: true, context: cmd })
  
@@ -42,13 +45,14 @@ app.get('/test', function(req, res){
 
 
 app.get('/ping' , function(req,res){
-		
-  getAsync('sudo ping 192.168.0.79').then(data => {
-	   res.send(data);	 
-	}).catch(err => {
-	  console.log('cmd err', err)
-	  res.send(err);
-	})
+	  
+	var hosts = ['192.168.0.79'];
+	hosts.forEach(function(host){
+		ping.sys.probe(host, function(isAlive){
+			var msg = isAlive ? 'host ' + host + ' is alive' : 'host ' + host + ' is dead';
+			console.log(msg);
+		});
+	});
 });
 
 // use port 3000 unless there exists a preconfigured port
