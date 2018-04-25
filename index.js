@@ -46,13 +46,13 @@ app.get('/test', function(req, res){
 
 app.get('/ping' , function(req,res){
 	  
-	var hosts = ['192.168.0.79'];
-	hosts.forEach(function(host){
+	var host = '192.168.0.79';
+	 
 		ping.sys.probe(host, function(isAlive){
 			var msg = isAlive ? 'host ' + host + ' is alive' : 'host ' + host + ' is dead';
-			console.log(msg);
+			 res.send(msg)
 		});
-	});
+	 
 });
 
 // use port 3000 unless there exists a preconfigured port
