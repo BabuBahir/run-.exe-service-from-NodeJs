@@ -14,7 +14,7 @@ app.get('/start/', function(req, res){
 	   res.send(data);	 
 	}).catch(err => {
 	  console.log('cmd err', err)
-	  res.send(data);
+	  res.send(err);
 	})
  
 });
@@ -25,7 +25,7 @@ app.get('/stop/', function(req, res){
 	   res.send(data);	 
 	}).catch(err => {
 	  console.log('cmd err', err)
-	  res.send(data);
+	  res.send(err);
 	})
 });
 
