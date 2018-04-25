@@ -43,7 +43,7 @@ app.get('/test', function(req, res){
 
 app.get('/ping' , function(req,res){
 		
-  getAsync('ping 192.168.0.79').then(data => {
+  getAsync('sudo ping 192.168.0.79').then(data => {
 	   res.send(data);	 
 	}).catch(err => {
 	  console.log('cmd err', err)
