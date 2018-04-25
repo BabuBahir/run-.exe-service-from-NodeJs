@@ -10,12 +10,20 @@ const getAsync = Promise.promisify(cmd.get, { multiArgs: true, context: cmd })
  
 app.get('/start', function(req, res){
    
-   getAsync('net start RohitService').then(data => {
-	   res.send(data);	 
+   
+   getAsync('net use \\SANGITA\admin$ admin /user:Administrator').then(data => {
+		
+				   getAsync('SC \\SANGITA start RohitService').then(data => {
+					   res.send(data);	 
+					}).catch(err => {
+					  console.log('cmd err', err)
+					  res.send(err);
+					})
 	}).catch(err => {
 	  console.log('cmd err', err)
 	  res.send(err);
 	})
+	
  
 });
 
