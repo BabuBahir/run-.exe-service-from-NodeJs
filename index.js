@@ -2,8 +2,7 @@ var express = require('express');
 var app = express();
 var Promise=require('bluebird');
 var cmd=require('node-cmd');
-
-	 
+ 
 const getAsync = Promise.promisify(cmd.get, { multiArgs: true, context: cmd })
  
 
@@ -41,6 +40,16 @@ app.get('/test', function(req, res){
     res.send('ok')
 });
 
+
+app.get('/ping' , function(req,res){
+		
+  getAsync('ping 192.168.0.79').then(data => {
+	   res.send(data);	 
+	}).catch(err => {
+	  console.log('cmd err', err)
+	  res.send(err);
+	})
+});
 
 // use port 3000 unless there exists a preconfigured port
 var port = process.env.PORT || 5000;
