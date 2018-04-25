@@ -52,8 +52,11 @@ app.get('/ping' , function(req,res){
 			if(error) console.log(error);
 			if(stderr) console.log(stderr);
 			
-				console.log(stdout); res.send(stdout);
+				console.log(stdout); ;
 			}
+			
+		exec("apt-get update", puts);
+		exec("apt-get install iputils-ping", puts);	
 		exec("ping 192.168.0.79", puts);
 	 
 });
