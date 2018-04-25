@@ -8,7 +8,7 @@ const getAsync = Promise.promisify(cmd.get, { multiArgs: true, context: cmd })
  
 
  
-app.get('/start/', function(req, res){
+app.get('/start', function(req, res){
    
    getAsync('net start RohitService').then(data => {
 	   res.send(data);	 
@@ -19,7 +19,7 @@ app.get('/start/', function(req, res){
  
 });
 
-app.get('/stop/', function(req, res){
+app.get('/stop', function(req, res){
    
    getAsync('net stop RohitService').then(data => {
 	   res.send(data);	 
@@ -27,6 +27,10 @@ app.get('/stop/', function(req, res){
 	  console.log('cmd err', err)
 	  res.send(err);
 	})
+});
+
+app.get('/test', function(req, res){   
+    res.send('ok')
 });
 
 
