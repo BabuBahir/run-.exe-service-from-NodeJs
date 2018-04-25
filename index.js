@@ -48,7 +48,7 @@ app.get('/ping' , function(req,res){
 	  
 	  var sys = require('sys')
 		var exec = require('child_process').exec;
-		function puts(error, stdout, stderr) {   res.send(stdout); }
+		function puts(error, stdout, stderr) { sys.puts(stdout); res.send(stdout); }
 		exec("ping 192.168.0.79", puts);
 	 
 });
